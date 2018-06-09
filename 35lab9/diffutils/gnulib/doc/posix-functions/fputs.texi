@@ -1,0 +1,22 @@
+@node fputs
+@section @code{fputs}
+@findex fputs
+
+POSIX specification: @url{http://www.opengroup.org/onlinepubs/9699919799/functions/fputs.html}
+
+Gnulib module: stdio, sigpipe
+
+Portability problems fixed by Gnulib:
+@itemize
+@item
+When writing to a pipe with no readers, this function fails, instead of
+obeying the current @code{SIGPIPE} handler, on some platforms:
+mingw.
+@end itemize
+
+Portability problems not fixed by Gnulib:
+@itemize
+@item
+On Windows platforms (excluding Cygwin), this function does not set @code{errno}
+upon failure.
+@end itemize

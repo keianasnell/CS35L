@@ -1,0 +1,21 @@
+@node readdir_r
+@section @code{readdir_r}
+@findex readdir_r
+
+POSIX specification: @url{http://www.opengroup.org/onlinepubs/9699919799/functions/readdir_r.html}
+
+Gnulib module: extensions
+
+Portability problems fixed by Gnulib:
+@itemize
+@item
+This function has an incompatible declaration on some platforms:
+Solaris 10 (when @code{_POSIX_PTHREAD_SEMANTICS} is not defined).
+@end itemize
+
+Portability problems not fixed by Gnulib:
+@itemize
+@item
+This function is missing on some platforms:
+mingw, BeOS.
+@end itemize

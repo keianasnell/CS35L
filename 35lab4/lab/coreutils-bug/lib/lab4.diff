@@ -1,0 +1,20 @@
+2018-05-04  Keiana Rei Snell  <classksn@lnxsrv09.seas.ucla.edu>
+
+        * new_timespec.h: Original timespec.h file did not account for integer \
+overflow for date values, therefore making file dates appear as if they were cr\
+eated in the future. This change fixed the bug by comparing the values for a.tv\
+_nsec and b.tv_nsec, and returning a value based on the sign of the difference \
+between the two.
+
+--- timespec.h	2018-05-04 23:23:14.215132000 -0700
++++ new_timespec.h	2018-05-04 23:22:48.090737000 -0700
+@@ -4,6 +4,7 @@
+ static inline int
+  timespec_cmp (struct timespec a, struct timespec b)
+  {
+-  int diff = a.tv_sec - b.tv_sec;
+-  return diff ? diff : a.tv_nsec - b.tv_nsec;
++    if (a.tv_nsec == b.tv_nsec) return 0;
++    else if(a.tv_nsec < b.tv_nsec) return -1;
++    else return 1;
+  }

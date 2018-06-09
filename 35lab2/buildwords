@@ -1,0 +1,13 @@
+#!/bin/sh
+
+grep '<td>.\+</td>$' |
+sed -n '1~2!p' |
+sed  "s/\`/\'/g" |
+tr 'A-Z' 'a-z' |
+sed 's/,/\n/g' |
+sed 's/\s/\n/g'|
+sed 's/<[^>]*>//g' |
+tr -d '[:blank:]' |
+sed "s/.*[^pk'mnwlhaeiou].*//" |
+sed '2d' |
+sort -u
